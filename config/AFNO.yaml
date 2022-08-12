@@ -85,13 +85,26 @@ timing: &timing
   max_epochs: 5
   log_to_wandb: False
 
+time_2node:
+  <<: *timing
+  batch_size: 8
+
 time_4node:
   <<: *timing
   batch_size: 16
 
-time_2node:
+time_8node:
   <<: *timing
-  batch_size: 8
+  batch_size: 32
+
+time_16node:
+  <<: *timing
+  batch_size: 64
+
+time_64node:
+  <<: *timing
+  batch_size: 256
+
 
 afno_backbone_orography: &backbone_orography 
   <<: *backbone

@@ -201,7 +201,6 @@ class Trainer():
     data_time = 0
     self.model.train()
     
-    logging.info("number of itrs = {}".format(len(self.train_data_loader)))
     itr_t0 = time.time()
     for i, data in enumerate(self.train_data_loader, 0):
 #      t0 = time.time()
@@ -257,6 +256,8 @@ class Trainer():
       if self.params.enable_amp:
         self.gscaler.update()
 
+      if self.params.log_to_screen:
+          print('completed iter %d'%i)
       tr_time += time.time() - tr_start
 #      t1 = time.time() - t0
 #      logging.info("time for 1 itr = {}".format(t1))

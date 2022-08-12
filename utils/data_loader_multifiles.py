@@ -69,7 +69,8 @@ def get_data_loader(params, files_pattern, distributed, train):
                           shuffle=False, #(sampler is None),
                           sampler=sampler if train else None,
                           drop_last=True,
-                          pin_memory=torch.cuda.is_available())
+                          pin_memory=torch.cuda.is_available(),
+                          multiprocessing_context="forkserver")
 
   if train:
     return dataloader, dataset, sampler
